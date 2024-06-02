@@ -55,23 +55,8 @@ app.post("/updatetask",(req,res)=>{
 })
 
 
-app.post("/deletetask",(req,res)=>{
-    const q="delete from table_tasks where taskid=?"
-    const value=[
-        req.body.taskid=String(req.body.taskid),
-    ]
-    db.query(q,[...value],(err,data)=>{
-        if(err){
-            return res.json(err)
-        }
-        else if(data){
-            return res.json("Task Deleted")
-        }
-    })
-})
 
-
-app.get("/deletetaskg/:id",(req,res)=>{
+app.get("/deletetask/:id",(req,res)=>{
     const taskid=req.params.id
     const q="delete from table_tasks where taskid=?"
     db.query(q,[taskid],(err,data)=>{
